@@ -4,7 +4,7 @@ var bio = {
 	"contacts": {
 		"mobile": "555-555-5555",
 		"email": "ysmael.castillo@gmail.com",
-		"location": "THE 6"
+		"location": "Toronto, ON"
 	},
 	"welcomeMessage": "Hey",
 	"skills": ["playing video games", "sleeping", "eating", "computer stuff"],
@@ -52,24 +52,24 @@ if (bio.skills.length > 0) {
 	$("#skills").append(formattedSkills);
 	var formattedSkills = HTMLskills.replace("%data%", skills[3]);
 	$("#skills").append(formattedSkills);
-};
+}
 
 var work = [
 	{
 		"employer" : "Virgin Mobile Canada",
 		"title" : "Customer Service Rep",
 		"dates" : "2011 - Current",
-		"location" : "Toronto, ON",
+		"location": "Toronto, ON",
 		"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 	},
 	{
 		"employer" : "Dynamex",
 		"title" : "Customer Service Rep/Dispatcher/Warehouse Manager/Business Adminstrator",
 		"dates" : "2005 - 2011",
-		"location" : "Mississauga, ON",
+		"location": "Mississauga, ON",
 		"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 	}
-]
+];
 
 function displayWork () {
 	for (job in work) {
@@ -86,8 +86,8 @@ function displayWork () {
 		$(".work-entry:last").append(formattedDates);
 		$(".work-entry:last").append(formattedLocation);
 		$(".work-entry:last").append(formattedDescription);
-	};
-};
+	}
+}
 
 displayWork ();
 
@@ -104,7 +104,7 @@ var projects = [
 		"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		"projectImage" : "http://placehold.it/150x150"
 	}
-]
+];
 
 $("#projects").append(HTMLprojectStart);
 var title = projects[0].title;
@@ -159,6 +159,8 @@ var school = education.school[0].name;
 var formattedName = HTMLschoolName.replace("%data%", school);
 var degree = education.school[0].degree;
 var formattedDegree = HTMLschoolDegree.replace("%data%", degree);
+var dates = education.school[0].dates;
+var formattedDates = HTMLschoolDates.replace("%data%", dates);
 var _location = education.school[0].location;
 var formattedLocation = HTMLschoolLocation.replace("%data%", _location);
 var major = education.school[0].major;
@@ -166,6 +168,7 @@ var formattedMajor = HTMLschoolMajor.replace("%data%", major);
 var url = education.school[0].url;
 var formattedUrl = HTMLschoolURL.replace("%data%", url);
 $(".education-entry").append(formattedName + formattedDegree);
+$(".education-entry").append(formattedDates);
 $(".education-entry").append(formattedLocation);
 $(".education-entry").append(formattedMajor);
 $(".education-entry").append(formattedUrl);
@@ -190,7 +193,8 @@ function inName(name) {
 	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 	
 	return(name[0] + " " + name[1]);
-};
+}
+
 $("#main").append(internationalizeButton);
 
 $("#mapDiv").append(googleMap);
