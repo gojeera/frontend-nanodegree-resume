@@ -23,21 +23,26 @@ function displayBio() {
 	$("#header").prepend(formattedName);
 	$("#header").append(formattedWelcomeMsg);
 	$("#header").append(formattedBioPic);
-	
+
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-	
+
 	$("#topContacts").append(formattedMobile);
 	$("#topContacts").append(formattedEmail);
 	$("#topContacts").append(formattedGithub);
 	$("#topContacts").append(formattedLocation);
-	
+
+	$("#footerContacts").append(formattedMobile);
+	$("#footerContacts").append(formattedEmail);
+	$("#footerContacts").append(formattedGithub);
+	$("#footerContacts").append(formattedLocation);
+
 	$("#header").append(HTMLskillsStart);
 	for (i = 0; i < bio.skills.length; i++) {
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
-		
+
 		$("#skills").append(formattedSkills);
 	}
 }
@@ -93,60 +98,99 @@ var projects = {
 		"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 		"images" : ["http://placehold.it/150x150", "http://placehold.it/150x150"]
 	}]
-}
+};
 
 function displayProjects() {
 	for(project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
-		
+
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-		
+
 		$(".project-entry:last").append(formattedTitle);
 		$(".project-entry:last").append(formattedDates);
 		$(".project-entry:last").append(formattedDescription);
-		
+
 		if(projects.projects[project].images.length > 0) {
 			for(image in projects.projects[project].images) {
 				var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-				
+
 				$(".project-entry:last").append(formattedImages);
 			}
 		}
 	}
 
 }
-displayProjects() ;
+displayProjects();
 
 //education
 var education = {
 	"schools" : [{
 		"name" : "York University",
-		"location" : "North York, ON",
 		"degree" : "Bachelor of Arts",
+		"dates" : "2001 - 2005",
 		"majors" : "Business Administration",
-		"dates" : "2001 - 2005", 
+		"location" : "North York, ON",
 		"url" : "http://www.yorku.ca/index.html"
 	}, {
 		"name" : "Made Up School",
-		"location" : "Atlanitc Ocean",
 		"degree" : "Bachelor of Fish",
+		"dates" : "2001 - 2005",
 		"majors" : "Sea Creatures",
-		"dates" : "2001 - 2005", 
+		"location" : "Atlanitc Ocean",
 		"url" : "https://www.ripleyaquariums.com/canada/"
 	}],
 	"onlineCourses" : [{
 		"title" : "Front-End Web Developer",
 		"school" : "Udacity",
 		"dates" : "2016",
-		"url": "https://www.udacity.com/"
+		"url": "https://www.udacity.com"
 	}, {
 		"title" : "Video Game Nerd",
 		"school" : "SIFTD",
 		"dates" : "2016",
-		"url": "http://siftd.net/"
+		"url": "http://siftd.net"
 	}]
 };
-	
-		
+
+function displayEducation() {
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+
+		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var formattedNameDegree = formattedName + formattedDegree;
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedMajors = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		var formattedUrl = HTMLschoolURL.replace("%data%", education.schools[school].url);
+
+		$(".education-entry:last").append(formattedNameDegree);
+		$(".education-entry:last").append(formattedDates);
+		$(".education-entry:last").append(formattedMajors);
+		$(".education-entry:last").append(formattedLocation);
+		$(".education-entry:last").append(formattedUrl);
+	}
+
+	$("#education").append(HTMLonlineStart);
+	$(".online-courses").append(HTMLonlineClasses);
+
+	for (online in education.onlineCourses) {
+		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title);
+		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[online].school);
+		var formattedTitleSchool = formattedTitle + formattedSchool;
+		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[online].dates);
+		var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[online].url);
+
+		$(".online-courses:last").append(formattedTitleSchool);
+		$(".online-courses:last").append(formattedDates);
+		$(".online-courses:last").append(formattedUrl);
+	}
+}
+displayEducation();
+
+//map
+$("#mapDiv").append(googleMap);
+
+
